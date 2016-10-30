@@ -55,20 +55,15 @@ isDigit :: Char -> Bool          -- will accept Char and return boolean
 ```
 
 
-## Guards
+## [Guards](src/guards.hs)
 Guard (`|`) can be used as pattern matching to define function return values for some conditions
 ```
-squareRoots :: Int -> Int -> Int -> [Int]   {- ax^2 + bx + c = 0 -}
-squareRoots a b c 
-  | a == 0 && b == 0 = []             {- if a=0,b=0 -> no solutions -}
-  | a == 1 && b == 1 && c == 1 = []   {- if a=1,b=1,c=1 -> no non-complex solutions -}
-  | a == 0  = [-c/b]                  {- if a=0 -> one solution x = -c/b -}
-  | otherwise = [x1, x2]              {- two solutions -}
-  where
-    p = b/a                           {- p = b/a -}
-    q = c/a                           {- q = c/a -}
-    x1 = (-p)/2 + sqrt((p/2)**2 - q)  {- 1st root -}
-    x2 = (-p)/2 - sqrt((p/2)**2 - q)  {- 2nd root -}
+isTrianglePythagoras :: Int -> Int -> Int-> Bool
+isTrianglePythagoras a b c 
+   | (a >= b && a >= c) = (c^2 + b^2 == a^2)   {- when a is hypothenuse -}
+   | (b >= a && b >= c) = (a^2 + c^2 == b^2)   {- when b is hypothenuse -}
+   | otherwise = (a^2 + b^2 == c^2)            {- then c is hypothenuse -}
+
 ```
 
 
