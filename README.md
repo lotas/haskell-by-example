@@ -67,6 +67,31 @@ isTrianglePythagoras a b c
 ```
 
 
+##  [Couldn't match expected type 'Float’ with actual type ‘Int’](src/int2float.hs)
+
+Not fully understand yet why declaring funciton type forces me to use `fromIntegral` function
+
+Works fine with `ghci`:
+```
+Prelude> i2f a = a/1
+Prelude> ab = 3
+Prelude> ab :: Int
+Prelude> i2f ab
+3.0
+```
+
+But when declaring type, we need to add explicit conversion with the help of `fromIntegral`
+```
+i2f :: Int -> Float
+i2f a = a/1
+{- results in     • Couldn't match expected type ‘Float’ with actual type ‘Int’  -}
+
+i2f :: Int -> Float
+i2f a = fromIntegral(a)/1
+```
+
+
+
 ## Resources:
 
 Great guide to start with: https://github.com/bitemyapp/learnhaskell
